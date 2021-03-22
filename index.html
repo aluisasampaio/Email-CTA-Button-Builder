@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>HTML Email CTA Builder</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/foundation.css">
+        <link rel="stylesheet" href="assets/css/app.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="https://www.microsoft.com/en-us/download/internet-explorer.aspx">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->       
+        
+        <header class="callout medium cell large-12">
+            <div class="grid-container"> 
+                <h1>HTML Email CTA Builder</h1>
+                <p>Builds the html for a fully clickable button for email.</p> 
+            </div>               
+        </header>
+        <div class="grid-container">            
+            <div class="grid-x grid-padding-x">
+                
+                <div class="cell large-8 medium-6">
+                    <div class="instruction large-12">
+                        <p>Fill in the form and click "Render button". Copy the resulting provided HTML code and paste it within your email code.</p>
+                    </div>                                   
+                    <form novalidate action="#" onsubmit="get_choices(); return false">                        
+                        <div class="grid-x grid-margin-x"> 
+                            <div class="cell large-4">   
+                                <div class="card" id="colors">                            
+                                    <div class="card-section grid-x grid-margin-x align-spaced">                                                  
+                                        <div class="header cell large-12">
+                                            <h5>Colors</h5> 
+                                        </div>             
+                                        <div class="subsection cell large-12">
+                                            <label for="bgcolor">Background Color:</label>
+                                            <input type="color" id="bgcolor" name="bgcolor" value="#000000">
+                                        </div>                 
+                                                
+                                        <div class="subsection cell large-12">
+                                            <label for="txtcolor">Text Color:</label>
+                                            <input type="color" id="txtcolor" name="txtcolor" value="#ffffff">
+                                        </div>
+                                    </div>                             
+                                </div> 
+                                <div class="card" id="text_formatting">
+                                    <div class="card-section grid-x grid-margin-x align-spaced">
+                                        <div class="header large-12">
+                                            <h5>Text Formatting</h5> 
+                                        </div>                                       
+                                        <div class="subsection large-12">
+                                            <label>Google Fonts </label>
+                                            <div id="font-picker"></div>
+                                            
+                                            <label>Fallback Font (required)
+                                                <select id="font_fallback" required>
+                                                <option value=""></option>
+                                                <option value="Arial">Arial</option>
+                                                <option value="Arial Black">Arial Black</option>
+                                                <option value="Helvetica">Helvetica</option>
+                                                <option value="Verdana">Verdana</option>
+                                                <option value="Trebuchet ">Trebuchet</option>
+                                                <option value="Times New Roman">Times New Roman</option>
+                                                <option value="Courier">Courier</option>
+                                                <option value="Courier New">Courier New</option>
+                                                </select>
+                                                <p class="error">You must select a fallback font.</p>
+                                            </label>
+                                            <div class="reveal-option large-12">
+                                                <p>Or, add a custom font <button type="button" class="arrow" onclick="show_custom_font_option()">&dtrif;</button></p>
+                                            </div>                                            
+                                            <div class="dropdown" data-dropdown data-auto-focus="true">
+                                                <label>Custom Fonts*
+                                                    <input id="font_input" type="text" placeholder="ex.: Font Name">
+                                                </label>
+                                                <p class="help-text">*Custom fonts will not render here, the fallback font will be shown in the preview.</p>
+                                            </div>
+                                            <hr>
+                                        </div>  
+                                        <div class="subsection large-5">
+                                            <label>Font size in px
+                                                <input id="font_size" type="text" value="18"  pattern="^[1-9][0-9]?$|^100$" required>
+                                                <p class="error">Font size must be a number between 1 - 100.</p>                                    
+                                            </label>
+                                        </div>      
+                                        <div class="subsection large-7">
+                                            <fieldset>
+                                                <label for="font_weight">Font Weight</label>
+                                                <input type="radio" name="font_weight" value="normal" id="regular"><label for="regular">Regular</label><br>
+                                                <input type="radio" name="font_weight" value="bold" id="bold" checked><label for="bold">Bold</label>                                    
+                                            </fieldset>
+                                        </div> 
+
+                                    </div>         
+                                </div>
+                            </div> 
+                            <div class="cell large-6">  
+                                <div class="card" id="btn-position">
+                                    <div class="card-section grid-x grid-margin-x align-spaced">   
+                                        <div class="header cell large-12">
+                                            <h5>Button Alignment & Shape</h5> 
+                                        </div>                                                                              
+                                        <div class="subsection cell large-12">
+                                            <fieldset>
+                                                <label for="btn_alignment" >Button Alignment<label>
+                                                <input type="radio" name="btn_alignment" value="left" id="left"><label for="left">Left</label>
+                                                <input type="radio" name="btn_alignment" value="center" id="center" checked><label for="center">Center</label> 
+                                                <input type="radio" name="btn_alignment" value="right" id="right" ><label for="right">Right</label>                                    
+                                            </fieldset>
+                                        </div>                                           
+                                        <div class="header cell large-12">
+                                            <h5>Padding</h5> 
+                                        </div> 
+                                        <div id="padding" class="cell grid-x grid-margin-x large-12 align-edges">
+                                            <div class="subsection cell large-6">
+                                                <label>Left/Right
+                                                    <input id="padding_lr" type="text" value="10" required pattern="^[1-9][0-9]?$|^100$"> 
+                                                    <p class="help-text">Value in px.</p>
+                                                </label>
+                                            </div>                
+                                            <div class="subsection cell  large-6">
+                                                <label>Top/Bottom
+                                                    <input id="padding_tb" type="text" value="10"  required pattern="^[0-9][0-9]?$|^100$">
+                                                    <p class="help-text">Value in px.</p>
+                                                </label>                                
+                                            </div>
+                                            <p class="error">Padding must be a number between 0 - 100.</p> 
+                                        </div>               
+                                         
+                                        <div class="header cell large-12">
+                                            <h5>Shape</h5> 
+                                        </div>                                             
+                                        <div class="subsection cell large-6">
+                                            <label>Border Radius in px
+                                                <input id="border_radius" type="text" value="3" required pattern="^[0-9][0-9]?$|^100$"> 
+                                                <p class="error">Border Radius must be a number between 0 - 100.</p>                                       
+                                            </label>
+                                            <p class="help-text">For not rounded corners, input 0.</p>
+                                        </div>                                           
+                                        <div class="subsection cell large-6">
+                                            <fieldset class="cell large-6">
+                                                <label for="btn_width">Button Size </label>
+                                                <input type="radio" name="btn_width" value="full" id="full"><label for="full">Full Width</label><br>
+                                                <input type="radio" name="btn_width" value="variable" id="variable" checked><label for="variable">With text</label>                                    
+                                            </fieldset>
+                                        </div>
+                                    </div>                                
+                                </div>
+                                <div class="card" id="link">
+                                    <div class="card-section grid-x grid-margin-x align-spaced">
+                                        <div class="header cell large-12">
+                                            <h5>Button Link & Text</h5> 
+                                        </div>                                      
+                                        <div class="subsection cell large-12">
+                                            <label>Button text
+                                                <input id="btn_text" type="text" placeholder="Click Me!!" required>
+                                                <p class="error">The button must have some text!</p>    
+                                            </label>
+                                        </div>                    
+                                        <div class="subsection cell large-12">
+                                            <label>Web address
+                                                <input id="btn_url" type="text" placeholder="https://example.com" required>
+                                                <p class="error">The button was have a url to go to!</p>    
+                                            </label>
+                                        </div>             
+                                        <div class="subsection cell large-12">                                                                            
+                                            <input id="target" type="checkbox"><label for="target">Open in a new window?</label>                                  
+                                        </div>          
+                                    </div>                 
+                                </div>                                 
+                            </div>
+                            <div class="cell large-2">
+                                <div class="grid-x grid-margin-x">
+                                    <fieldset class="cell large-12">
+                                        <button type="submit" id="custom_button" class="button" >Render Button</button>
+                                    </fieldset>
+                                </div>
+                            </div>                            
+                        </div>
+                    </form>
+                </div>
+                <div class="cell large-4 medium-6">
+                    <h3>Button Preview:</h3>
+                    <div id="preview">
+                    </div>
+                    <h3>Your button code will appear here:</h3>
+                    <pre><code id="code"></code></pre>
+                </div>
+            </div>            
+        </div>
+        <footer>
+            <div class="grid-x expanded callout">
+                <div class="cell large-12">
+                    <p>HTML Email CTA builder is a free tool by <a href="https://www.analuisasampaio.com/" target="_blank">analuisasampaio.com</a></p>
+                    <p>Credit: The Google Fonts picker used was developed by Samuel Meuli: <a href="https://github.com/samuelmeuli/font-picker" target="_blank" >FontPicker.js</a></p>
+                </div>                
+            </div>
+        </footer>  
+        <!--  JavaScript -->
+        <script src="assets/js/vendor.js"></script>
+        <script src="assets/js/foundation.js"></script>
+        <script src="assets/js/app.js"></script>
+        <script src="assets/js/FontPicker/FontPicker.js"></script>
+        <script>
+            const fontPicker = new FontPicker(
+                "AIzaSyDE3xmm5xslQwvkcuUZ21D0e8DQDHGHcXM", // Google API key
+                "Open Sans", // Default font
+                { limit: 100 }, // Additional options
+            );
+        </script>
+    </body>
+</html>

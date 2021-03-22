@@ -1,0 +1,136 @@
+body  {
+    background-color: #0E2431; 
+    color: #ffffff;
+    height: 100vh;
+}
+
+body > * , h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6{
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+.card {
+    color: #0E2431;
+    border-radius: 3px;
+}
+
+code {
+    white-space:pre-wrap;
+    padding: 0;
+    border:0;
+    font-size: 10px;
+    line-height: normal;
+}
+
+pre {
+    background-color: white;
+    line-height: 0;
+}
+
+table {
+    float: none;
+}
+
+div#preview, pre {
+    width: 100%;
+    height: 100px;
+    display: block;
+    background-color: white;    
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+.button {
+    width: 100%;
+    border-radius: 3px;
+    background-color: #f6716a;
+    text-transform: uppercase;
+    line-height: 125%;
+    font-weight: bold;
+}
+
+div.reveal-option p {
+    font-size: 0.875rem;
+}
+
+.button:hover, .button:active, .button:focus {
+    background-color: #f6716a;
+    box-shadow: 0 0 5px 1px #e27f79;
+}
+
+header.callout {
+    color: #ffffff;
+}
+
+header.callout h1 {
+    font-weight: bold;
+}
+
+.callout  {
+    background-color:#f6716a ;
+}
+
+.callout a {
+    color: #ffffff;
+
+}
+
+footer p {
+    text-align: center;
+}
+
+div p button {
+    display: inline-block;  
+    font-weight: bold;
+    color: #f6716a;
+    vertical-align: sub;
+    font-size: 1.5rem;
+    
+}
+
+div.dropdown {
+    display: none;
+}
+div#font-picker{
+    margin-bottom: 10px;
+    box-shadow: none;
+}
+
+div#font-picker .dropdown-button,
+div#font-picker .dropdown-button:hover,
+div#font-picker .dropdown-button:focus,
+div#font-picker ul , select{
+    border: 1px solid #cacaca;
+    border-radius: 0;
+    background-color: #fefefe;  
+    box-shadow: none;  
+    color: #0E2431;
+}
+
+div#font-picker ul li button:hover,
+div#font-picker ul li button:focus {
+    background-color: #ffdede;
+}
+
+div#font-picker ul li button.active-font {
+    background-color: #ffffff;
+}
+div#font-picker .dropdown-icon.finished::before{
+    color: #0E2431;
+}
+
+/* errors */
+
+p.error { 
+    display: none;
+    position: absolute;
+    color: red;
+    background-color: #ffdcdc;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid red;   
+}
+
+#padding p.error {
+    margin-top:-85px;
+   
+}
